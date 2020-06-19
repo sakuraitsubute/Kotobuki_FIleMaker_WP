@@ -10,9 +10,9 @@
   crossorigin="anonymous"></script>
  <!-- <script src="js/PaginateMyTable.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-  <script src="js/WM_web_inventory_find.js?1038"></script>
+  <script src="js/WM_web_inventory_find.js?1023"></script>
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/WM_web_inventory_find.css">
+  <link rel="stylesheet" href="css/WM_web_inventory_find.css?0830">
   <link rel="stylesheet" href="css/tablesorter/theme.green.css">
   
   <!--<link rel="stylesheet" href="css/PaginateMyTable.css"> -->
@@ -66,9 +66,15 @@ if(FileMaker::isError($result)){
  $findCommand[1]->addFindCriterion('削除フラグ',1);
  $findCommand[1]->setOmit(true);
 
+ $findCommand[2] = $fm->newFindRequest('棚卸し編集');
+ $findCommand[2]->addFindCriterion('在庫登録フラグ',1);
+ $findCommand[2]->setOmit(true);
+
+
  $compoundFind = $fm->newCompoundFindCommand('棚卸し編集');
  $compoundFind->add(1, $findCommand[0]);
  $compoundFind->add(2, $findCommand[1]);
+ $compoundFind->add(3, $findCommand[2]);
 
   $result2 = $compoundFind->execute();
   if(FileMaker::isError($result2)){
@@ -155,6 +161,8 @@ if(FileMaker::isError($result)){
   </table>
  
 </div>
+<div id="dicision">棚卸しの結果が間違いないと判断された場合のみ押してください
+<button type="button" id="dicision_button">棚卸し結果を在庫に反映</button></div>
 
 
 <p>

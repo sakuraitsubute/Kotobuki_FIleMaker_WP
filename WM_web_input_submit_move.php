@@ -1,3 +1,7 @@
+/*
+2020/06/26 入庫と出庫の位置を入れ替え、ラベルの値を「移動元」「移動先」に変更
+*/
+
 <DOCTYPE html>
   <html>
   <head>
@@ -38,10 +42,10 @@ session_start();
   <form  action="WM_web_input_receive_test.php" method="POST" id="php" onsubmit="return false;">
   <div>
       <span class="cp_ipradio">
-        <input type="radio" name="inout" id="inout1" class="inout1" value="入庫" >
-        <label for="inout1">入庫</label>
-        <input type="radio" name="inout" id="inout2" class="inout2" value="出庫" >
-        <label for="inout2">出庫</label>
+        <input type="radio" name="inout" id="inout1" class="inout2" value="出庫" >
+        <label for="inout1">移動元</label>
+        <input type="radio" name="inout" id="inout2" class="inout1" value="入庫" >
+        <label for="inout2">移動先</label>
         
        
       </span>
@@ -68,7 +72,6 @@ session_start();
         
       
       <!--
-
       <tr>
         <td><input type="text" name="qr02" id="id_qr02" style="width:200px;"></td>
         <td><input type="text" name="case02"></td>
@@ -85,8 +88,6 @@ session_start();
         <td><input type="text" name="qr05" id="id_qr05" style="width:200px;"></td>
         <td><input type="text" name="case05"></td>
       </tr>
-
-
       -->
      
 
